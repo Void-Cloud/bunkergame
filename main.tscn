@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://bq34lry12yosb"]
 
+[ext_resource type="PackedScene" uid="uid://ci7elgfuorpyh" path="res://player.tscn" id="1_ig7tw"]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_7dm0k"]
 size = Vector3(60, 2, 60)
 
@@ -20,3 +22,6 @@ mesh = SubResource("BoxMesh_ig7tw")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2146634527]
 transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, 0.99999994, 0, -0.99999994, -4.3711385e-08, 0, 11.935375, 0)
 shadow_enabled = true
+
+[node name="Player" parent="." unique_id=999294788 instance=ExtResource("1_ig7tw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
