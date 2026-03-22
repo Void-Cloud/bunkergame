@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://d18sngsltlbo7"]
+
+[ext_resource type="Script" uid="uid://q4rv2p3d0va0" path="res://computer_screen.gd" id="1_ustbd"]
+
+[node name="ComputerScreen" type="Node2D" unique_id=1780052513]
+script = ExtResource("1_ustbd")
+
+[node name="ScreenBackground" type="Panel" parent="." unique_id=1408205263]
+offset_right = 600.0
+offset_bottom = 400.0
+
+[node name="LineEdit" type="LineEdit" parent="." unique_id=180881461]
+offset_left = 22.0
+offset_top = 350.0
+offset_right = 578.0
+offset_bottom = 381.0
+keep_editing_on_text_submit = true
+
+[node name="Label" type="Label" parent="." unique_id=458084462]
+offset_left = 24.0
+offset_top = 15.0
+offset_right = 577.0
+offset_bottom = 339.0
+text = "Welcome to the first beta of the computer.
+For help, use the command \"help\""
+vertical_alignment = 2
