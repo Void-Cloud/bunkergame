@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://bq34lry12yosb"]
 
+[ext_resource type="Script" uid="uid://drbu8j2vm476u" path="res://main.gd" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://ci7elgfuorpyh" path="res://player.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://d18sngsltlbo7" path="res://computer_screen.tscn" id="2_0xm2m"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7dm0k"]
 size = Vector3(60, 2, 60)
@@ -8,7 +10,12 @@ size = Vector3(60, 2, 60)
 [sub_resource type="BoxMesh" id="BoxMesh_ig7tw"]
 size = Vector3(60, 2, 60)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h2yge"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1bvp3"]
+
 [node name="Main" type="Node" unique_id=2066736840]
+script = ExtResource("1_h2yge")
 
 [node name="BunkerFloor" type="StaticBody3D" parent="." unique_id=1091297211]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -25,3 +32,13 @@ shadow_enabled = true
 
 [node name="Player" parent="." unique_id=999294788 instance=ExtResource("1_ig7tw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="ScreenViewportMesh" type="MeshInstance3D" parent="." unique_id=1223430878]
+transform = Transform3D(0.02443221, -0.9997015, 0, -4.369834e-08, -1.0679658e-09, -1, 0.9997015, 0.02443221, -4.371139e-08, 4.6140776, 1.9583132, 0)
+material_override = SubResource("StandardMaterial3D_h2yge")
+mesh = SubResource("PlaneMesh_1bvp3")
+
+[node name="ScreenViewport" type="SubViewport" parent="." unique_id=1351068997]
+size = Vector2i(600, 400)
+
+[node name="ComputerScreen" parent="ScreenViewport" unique_id=1780052513 instance=ExtResource("2_0xm2m")]
