@@ -10,9 +10,14 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_just_pressed("enter"):
-		parse_text(lineEdit.text)
-		lineEdit.text = ""
+	if (Global.is_computer_interacted):
+		if Input.is_action_just_pressed("enter"):
+			parse_text(lineEdit.text)
+			lineEdit.text = ""
+		lineEdit.grab_focus()
+		if Input.is_action_just_pressed("cancel"):
+			Global.is_computer_interacted = false
+			lineEdit.release_focus()
 
 func parse_text(command: String):
 	command.to_lower()
