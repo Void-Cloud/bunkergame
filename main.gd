@@ -10,6 +10,9 @@ func _ready():
 	# Retrieve the texture and set it to the viewport quad.
 	$ScreenViewportMesh.material_override.albedo_texture = viewport.get_texture()
 
+func _input(event):
+	if Global.is_computer_interacted:
+		$ScreenViewport.push_input(event)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
