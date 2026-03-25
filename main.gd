@@ -18,6 +18,14 @@ func _input(event):
 func _process(delta):
 	pass
 
-
 func _on_computer_screen_open_door():
 	$Door.move_and_collide(Vector3(0,3,0))
+
+
+func _on_area_3d_body_entered(body):
+	if body == $Player:
+		$Player.show_win_text()
+
+
+func _on_player_exit_game():
+	get_tree().quit()

@@ -35,6 +35,15 @@ size = Vector3(1, 3, 2)
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_272bh"]
 points = PackedVector3Array(0.5, 1.5, 1, -0.5, 1.5, 1, 0.5, -1.5, 1, 0.5, 1.5, -1, -0.5, 1.5, -1, -0.5, -1.5, 1, 0.5, -1.5, -1, -0.5, -1.5, -1)
 
+[sub_resource type="BoxMesh" id="BoxMesh_7mycd"]
+size = Vector3(3, 1, 3)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_5vw27"]
+points = PackedVector3Array(-1.5, -0.5, -1.5, -1.5, 0.5, -1.5, 1.5, -0.5, -1.5, -1.5, -0.5, 1.5, -1.5, 0.5, 1.5, 1.5, 0.5, -1.5, 1.5, -0.5, 1.5, 1.5, 0.5, 1.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h2yge"]
+size = Vector3(1, 3, 2)
+
 [node name="Main" type="Node" unique_id=2066736840]
 script = ExtResource("1_h2yge")
 
@@ -117,4 +126,24 @@ mesh = SubResource("BoxMesh_lquwl")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7516384, 1.528274, 0.0670743)
 shape = SubResource("ConvexPolygonShape3D_272bh")
 
+[node name="WinArea" type="StaticBody3D" parent="." unique_id=664802138]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.732611, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WinArea" unique_id=334264310]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1711626, -0.5296173, 0)
+mesh = SubResource("BoxMesh_7mycd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WinArea" unique_id=585372675]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1711626, -0.5296173, 0)
+shape = SubResource("ConvexPolygonShape3D_5vw27")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=703487885]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.54484, 1.8158875, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=612734205]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8247261, -0.2072053, 0)
+shape = SubResource("BoxShape3D_h2yge")
+
+[connection signal="exit_game" from="Player" to="." method="_on_player_exit_game"]
 [connection signal="open_door" from="ScreenViewport/ComputerScreen" to="." method="_on_computer_screen_open_door"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

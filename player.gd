@@ -1,11 +1,15 @@
 extends CharacterBody3D
 
-
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
+signal exit_game
+
 @onready var neck := $Neck
 @onready var camera := $Neck/Camera3D
+
+func _ready():
+	$WinText.hide()
 
 func _unhandled_input(event):
 	if !Global.is_computer_interacted:
@@ -45,3 +49,10 @@ func _physics_process(delta):
 			velocity.z = move_toward(velocity.z, 0, SPEED)
 
 		move_and_slide()
+
+func show_win_text():
+	$WinText.show()
+
+
+func _on_button_pressed():
+	emit_signal("exit_game")
