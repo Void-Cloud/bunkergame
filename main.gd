@@ -17,3 +17,7 @@ func _input(event):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+
+func _on_computer_screen_open_door():
+	$Door.move_and_collide(Vector3(0,3,0))

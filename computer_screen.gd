@@ -1,5 +1,7 @@
 extends Node2D
 
+signal open_door
+
 @onready var lineEdit = $LineEdit
 @onready var printOut = $Label
 
@@ -26,6 +28,7 @@ func parse_text(command: String):
 			write_to_print_out("Use 'open' command to open the door.")
 		"open":
 			write_to_print_out("Opening the door.")
+			emit_signal("open_door")
 		"":
 			write_to_print_out(" ")
 		_:
