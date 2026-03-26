@@ -20,6 +20,7 @@ func _process(delta):
 
 func _on_computer_screen_open_door():
 	$Door.move_and_collide(Vector3(0,3,0))
+	$ProgressSound.play()
 
 
 func _on_area_3d_body_entered(body):

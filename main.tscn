@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://drbu8j2vm476u" path="res://main.gd" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://ci7elgfuorpyh" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://d18sngsltlbo7" path="res://computer_screen.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://b717snnro6qhv" path="res://Table.gltf" id="4_1bvp3"]
+[ext_resource type="AudioStream" uid="uid://grqx74ff52fe" path="res://Progress.wav" id="5_lquwl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7dm0k"]
 size = Vector3(20, 2, 20)
@@ -44,6 +46,8 @@ points = PackedVector3Array(-1.5, -0.5, -1.5, -1.5, 0.5, -1.5, 1.5, -0.5, -1.5, 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h2yge"]
 size = Vector3(1, 3, 2)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_1bvp3"]
+
 [node name="Main" type="Node" unique_id=2066736840]
 script = ExtResource("1_h2yge")
 
@@ -64,7 +68,7 @@ shadow_enabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="ScreenViewportMesh" type="MeshInstance3D" parent="." unique_id=1223430878]
-transform = Transform3D(0.02443221, -0.9997015, 0, -4.369834e-08, -1.0679658e-09, -1, 0.9997015, 0.02443221, -4.371139e-08, 4.6140776, 1.9583132, 0)
+transform = Transform3D(0.02443221, -0.9997015, 0, -4.369834e-08, -1.0679658e-09, -1, 0.9997015, 0.02443221, -4.371139e-08, 4.6140776, 2.2147262, 0)
 material_override = SubResource("StandardMaterial3D_h2yge")
 mesh = SubResource("PlaneMesh_1bvp3")
 
@@ -143,6 +147,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.54484, 1.8158875, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=612734205]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8247261, -0.2072053, 0)
 shape = SubResource("BoxShape3D_h2yge")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1944044355]
+
+[node name="blockbench_export" parent="StaticBody3D" unique_id=804548720 instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1.8128462, 0, 0, 0, 1.8980691, 0, 0, 0, 2.1777132, 4.2797623, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=739080695]
+transform = Transform3D(1.381125, 0, 0, 0, 1, 0, 0, 0, 2.1800306, 4.158082, 0.5942733, -2.3841858e-07)
+shape = SubResource("BoxShape3D_1bvp3")
+
+[node name="ProgressSound" type="AudioStreamPlayer" parent="." unique_id=997620903]
+stream = ExtResource("5_lquwl")
 
 [connection signal="exit_game" from="Player" to="." method="_on_player_exit_game"]
 [connection signal="open_door" from="ScreenViewport/ComputerScreen" to="." method="_on_computer_screen_open_door"]
